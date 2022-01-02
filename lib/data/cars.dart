@@ -26,9 +26,9 @@ List<Map> cars = [
   {
     'carName': 'Toyota Yaris COMFORT 2020',
     'carClass': 'City',
+    'carPower': 72,
     'people': '1-4',
     'bags': '1-2',
-    'carPower': 72,
     'carImage': 'assets/images/yaris.png',
     'carPrice': 10,
     'isRotated': false,
