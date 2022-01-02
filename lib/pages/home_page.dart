@@ -26,6 +26,8 @@ class _HomePageState extends State<HomePage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
         child: AppBar(
+          bottomOpacity: 0.0,
+          elevation: 0.0,
           shadowColor: Colors.transparent,
           backgroundColor: isDarkMode
               ? const Color(0xff06090d)
