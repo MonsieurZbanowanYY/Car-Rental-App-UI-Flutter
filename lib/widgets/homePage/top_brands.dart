@@ -2,10 +2,10 @@ import 'package:car_rental_app_ui/widgets/homePage/brand_logo.dart';
 import 'package:car_rental_app_ui/widgets/homePage/category.dart';
 import 'package:flutter/material.dart';
 
-Column buildTopBrands(Size size, bool isDarkMode) {
+Column buildTopBrands(Size size, ThemeData themeData) {
   return Column(
     children: [
-      buildCategory('Top Brands', size, isDarkMode),
+      buildCategory('Top Brands', size, themeData),
       Padding(
         padding: EdgeInsets.only(top: size.height * 0.015),
         child: Row(
@@ -19,7 +19,7 @@ Column buildTopBrands(Size size, bool isDarkMode) {
                 fit: BoxFit.fill,
               ),
               size,
-              isDarkMode,
+              themeData,
             ),
             buildBrandLogo(
               Image.asset(
@@ -29,7 +29,7 @@ Column buildTopBrands(Size size, bool isDarkMode) {
                 fit: BoxFit.fill,
               ),
               size,
-              isDarkMode,
+              themeData,
             ),
             buildBrandLogo(
               Image.asset(
@@ -39,7 +39,7 @@ Column buildTopBrands(Size size, bool isDarkMode) {
                 fit: BoxFit.fill,
               ),
               size,
-              isDarkMode,
+              themeData,
             ),
             buildBrandLogo(
               Image.asset(
@@ -49,7 +49,7 @@ Column buildTopBrands(Size size, bool isDarkMode) {
                 fit: BoxFit.fill,
               ),
               size,
-              isDarkMode,
+              themeData,
             ),
           ],
         ),

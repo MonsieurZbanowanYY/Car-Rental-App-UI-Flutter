@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Padding buildBrandLogo(Widget image, Size size, bool isDarkMode) {
+Padding buildBrandLogo(Widget image, Size size, ThemeData themeData) {
   return Padding(
     padding: EdgeInsets.symmetric(
       horizontal: size.width * 0.03,
@@ -10,7 +10,7 @@ Padding buildBrandLogo(Widget image, Size size, bool isDarkMode) {
       width: size.width * 0.18,
       child: Container(
         decoration: BoxDecoration(
-          color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.white,
+          color: themeData.cardColor,
           borderRadius: const BorderRadius.all(
             Radius.circular(
               20,

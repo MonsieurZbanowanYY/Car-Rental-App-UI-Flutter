@@ -37,10 +37,7 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //check the size of device
-    var brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness ==
-        Brightness.dark; //check if device is in dark or light mode
-
+    ThemeData themeData = Theme.of(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
@@ -48,9 +45,7 @@ class _DetailsPageState extends State<DetailsPage> {
           bottomOpacity: 0.0,
           elevation: 0.0,
           shadowColor: Colors.transparent,
-          backgroundColor: isDarkMode
-              ? const Color(0xff06090d)
-              : const Color(0xfff8f8f8), //appbar bg color
+          backgroundColor: themeData.backgroundColor,
           leading: Padding(
             padding: EdgeInsets.only(
               left: size.width * 0.05,
@@ -64,16 +59,14 @@ class _DetailsPageState extends State<DetailsPage> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    color: isDarkMode
-                        ? const Color(0xff070606)
-                        : Colors.white, //icon bg color
+                    color: themeData.cardColor,
                     borderRadius: const BorderRadius.all(
                       Radius.circular(10),
                     ),
                   ),
                   child: Icon(
                     UniconsLine.multiply,
-                    color: isDarkMode ? Colors.white : const Color(0xff3b22a1),
+                    color: themeData.secondaryHeaderColor,
                     size: size.height * 0.025,
                   ),
                 ),
@@ -84,7 +77,7 @@ class _DetailsPageState extends State<DetailsPage> {
           titleSpacing: 0,
           leadingWidth: size.width * 0.15,
           title: Image.asset(
-            isDarkMode
+            themeData.brightness == Brightness.dark
                 ? 'assets/icons/SobGOGlight.png'
                 : 'assets/icons/SobGOGdark.png',
             height: size.height * 0.06,
@@ -100,9 +93,7 @@ class _DetailsPageState extends State<DetailsPage> {
           height: size.height,
           width: size.height,
           decoration: BoxDecoration(
-            color: isDarkMode
-                ? const Color(0xff06090d)
-                : const Color(0xfff8f8f8), //background color
+            color: themeData.backgroundColor,
           ),
           child: SafeArea(
             child: Padding(
@@ -139,9 +130,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             widget.carClass,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white
-                                  : const Color(0xff3b22a1),
+                              color: themeData.primaryColor,
                               fontSize: size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
@@ -169,9 +158,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             widget.carName,
                             textAlign: TextAlign.left,
                             style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white
-                                  : const Color(0xff3b22a1),
+                              color: themeData.primaryColor,
                               fontSize: size.width * 0.05,
                               fontWeight: FontWeight.bold,
                             ),
@@ -180,9 +167,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           Text(
                             '${widget.carPrice}\$',
                             style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white
-                                  : const Color(0xff3b22a1),
+                              color: themeData.primaryColor,
                               fontSize: size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
@@ -190,9 +175,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           Text(
                             '/per day',
                             style: GoogleFonts.poppins(
-                              color: isDarkMode
-                                  ? Colors.white.withOpacity(0.8)
-                                  : Colors.black.withOpacity(0.8),
+                              color: themeData.primaryColor.withOpacity(0.8),
                               fontSize: size.width * 0.025,
                               fontWeight: FontWeight.bold,
                             ),
@@ -211,21 +194,21 @@ class _DetailsPageState extends State<DetailsPage> {
                               '${widget.carPower} KM',
                               'Power',
                               size,
-                              isDarkMode,
+                              themeData,
                             ),
                             buildStat(
                               UniconsLine.users_alt,
                               'People',
                               '( ${widget.people} )',
                               size,
-                              isDarkMode,
+                              themeData,
                             ),
                             buildStat(
                               UniconsLine.briefcase,
                               'Bags',
                               '( ${widget.bags} )',
                               size,
-                              isDarkMode,
+                              themeData,
                             ),
                           ],
                         ),
@@ -237,9 +220,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         child: Text(
                           'Select Location',
                           style: GoogleFonts.poppins(
-                            color: isDarkMode
-                                ? Colors.white
-                                : const Color(0xff3b22a1),
+                            color: themeData.primaryColor,
                             fontSize: size.width * 0.055,
                             fontWeight: FontWeight.bold,
                           ),
@@ -251,13 +232,9 @@ class _DetailsPageState extends State<DetailsPage> {
                           width: size.width * 0.9,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: isDarkMode
-                                  ? Colors.white.withOpacity(0.05)
-                                  : Colors.white,
+                              color: themeData.cardColor,
                               borderRadius: const BorderRadius.all(
-                                Radius.circular(
-                                  10,
-                                ),
+                                Radius.circular(10),
                               ),
                             ),
                             child: Row(
@@ -282,9 +259,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                         'Katowice Airport',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.poppins(
-                                          color: isDarkMode
-                                              ? Colors.white
-                                              : const Color(0xff3b22a1),
+                                          color: themeData.primaryColor,
                                           fontSize: size.width * 0.05,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -293,9 +268,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                         'Wolności 90, 42-625 Pyrzowice',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.poppins(
-                                          color: isDarkMode
-                                              ? Colors.white.withOpacity(0.7)
-                                              : Colors.black.withOpacity(0.7),
+                                          color: themeData.primaryColor
+                                              .withOpacity(0.6),
                                           fontSize: size.width * 0.032,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -310,9 +284,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                     decoration: const BoxDecoration(
                                       color: Colors.black,
                                       borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                          10,
-                                        ),
+                                        Radius.circular(10),
                                       ),
                                     ),
                                     child: Align(
@@ -335,7 +307,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                     ],
                   ),
-                  buildSelectButton(size, isDarkMode),
+                  buildSelectButton(size),
                 ],
               ),
             ),
@@ -346,7 +318,12 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Padding buildStat(
-      IconData icon, String title, String desc, Size size, bool isDarkMode) {
+    IconData icon,
+    String title,
+    String desc,
+    Size size,
+    ThemeData themeData,
+  ) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: size.width * 0.015,
@@ -356,11 +333,9 @@ class _DetailsPageState extends State<DetailsPage> {
         width: size.width * 0.25,
         child: Container(
           decoration: BoxDecoration(
-            color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.white,
+            color: themeData.cardColor,
             borderRadius: const BorderRadius.all(
-              Radius.circular(
-                10,
-              ),
+              Radius.circular(10),
             ),
           ),
           child: Padding(
@@ -383,7 +358,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   child: Text(
                     title,
                     style: GoogleFonts.poppins(
-                      color: isDarkMode ? Colors.white : Colors.black,
+                      color: themeData.primaryColor,
                       fontSize: size.width * 0.05,
                       fontWeight: FontWeight.bold,
                     ),
@@ -392,9 +367,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 Text(
                   desc,
                   style: GoogleFonts.poppins(
-                    color: isDarkMode
-                        ? Colors.white.withOpacity(0.7)
-                        : Colors.black.withOpacity(0.7),
+                    color: themeData.primaryColor.withOpacity(0.7),
                     fontSize: size.width * 0.04,
                     fontWeight: FontWeight.bold,
                   ),
@@ -408,7 +381,7 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 }
 
-Align buildSelectButton(Size size, bool isDarkMode) {
+Align buildSelectButton(Size size) {
   return Align(
     alignment: Alignment.bottomCenter,
     child: Padding(

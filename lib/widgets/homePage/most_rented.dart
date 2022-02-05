@@ -3,10 +3,10 @@ import 'package:car_rental_app_ui/widgets/homePage/car.dart';
 import 'package:car_rental_app_ui/widgets/homePage/category.dart';
 import 'package:flutter/material.dart';
 
-Widget buildMostRented(Size size, bool isDarkMode) {
+Widget buildMostRented(Size size, ThemeData themeData) {
   return Column(
     children: [
-      buildCategory('Most Rented', size, isDarkMode),
+      buildCategory('Most Rented', size, themeData),
       Padding(
         padding: EdgeInsets.only(
           top: size.height * 0.015,
@@ -25,7 +25,7 @@ Widget buildMostRented(Size size, bool isDarkMode) {
               return buildCar(
                 i,
                 size,
-                isDarkMode,
+                themeData,
               );
             },
           ),

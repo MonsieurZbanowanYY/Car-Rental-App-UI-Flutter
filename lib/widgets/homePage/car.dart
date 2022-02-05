@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicons/unicons.dart';
 
-Padding buildCar(int i, Size size, bool isDarkMode) {
+Padding buildCar(int i, Size size, ThemeData themeData) {
   return Padding(
     padding: EdgeInsets.only(
       right: size.width * 0.03,
@@ -18,7 +18,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
         width: size.width * 0.5,
         child: Container(
           decoration: BoxDecoration(
-            color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.white,
+            color: themeData.cardColor,
             borderRadius: const BorderRadius.all(
               Radius.circular(
                 20,
@@ -79,8 +79,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                       cars[i]['carClass'],
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                        color:
-                            isDarkMode ? Colors.white : const Color(0xff3b22a1),
+                        color: themeData.secondaryHeaderColor,
                         fontSize: size.width * 0.05,
                         fontWeight: FontWeight.bold,
                       ),
@@ -90,8 +89,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                     cars[i]['carName'],
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      color:
-                          isDarkMode ? Colors.white : const Color(0xff3b22a1),
+                      color: themeData.secondaryHeaderColor,
                       fontSize: size.width * 0.03,
                       fontWeight: FontWeight.bold,
                     ),
@@ -101,9 +99,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                       Text(
                         '${cars[i]['carPrice']}\$',
                         style: GoogleFonts.poppins(
-                          color: isDarkMode
-                              ? Colors.white
-                              : const Color(0xff3b22a1),
+                          color: themeData.secondaryHeaderColor,
                           fontSize: size.width * 0.06,
                           fontWeight: FontWeight.bold,
                         ),
@@ -111,9 +107,7 @@ Padding buildCar(int i, Size size, bool isDarkMode) {
                       Text(
                         '/per day',
                         style: GoogleFonts.poppins(
-                          color: isDarkMode
-                              ? Colors.white.withOpacity(0.8)
-                              : Colors.black.withOpacity(0.8),
+                          color: themeData.primaryColor.withOpacity(0.8),
                           fontSize: size.width * 0.03,
                           fontWeight: FontWeight.bold,
                         ),

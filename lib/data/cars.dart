@@ -4,7 +4,7 @@ List<Map> cars = [
   {
     'carName': 'Hyundai i30 N 2021',
     'carClass': 'Sport',
-    'carPower': 265,
+    'carPower': 280,
     'people': '1-4',
     'bags': '1-3',
     'carImage': 'assets/images/i30n.png',

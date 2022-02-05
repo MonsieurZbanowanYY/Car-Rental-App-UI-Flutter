@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Row buildCategory(String text, size, isDarkMode) {
+Row buildCategory(String text, size, ThemeData themeData) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -14,7 +14,7 @@ Row buildCategory(String text, size, isDarkMode) {
           text,
           textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
-            color: isDarkMode ? Colors.white : const Color(0xff3b22a1),
+            color: themeData.secondaryHeaderColor,
             fontWeight: FontWeight.bold,
             fontSize: size.width * 0.055,
           ),
@@ -29,9 +29,7 @@ Row buildCategory(String text, size, isDarkMode) {
           'View All',
           textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
-            color: isDarkMode
-                ? Colors.white.withOpacity(0.5)
-                : Colors.black.withOpacity(0.5),
+            color: themeData.primaryColor.withOpacity(0.8),
             fontSize: size.width * 0.04,
           ),
         ),
